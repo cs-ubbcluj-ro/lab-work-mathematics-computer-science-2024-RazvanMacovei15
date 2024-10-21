@@ -27,6 +27,14 @@ public class LAB_1 {
             Identifiers:
                 Must start with a letter, and can contain letters and digits.
                 Cannot use Java reserved words (int, boolean, float, class, if, else, while, for, Scanner, System.out, etc.).
+
+                identifier ::= letter | letter{letter}{digit}
+
+                letter ::= "A" | "B" | . ..| "Z"
+
+                digit ::= "0" | "1" |...| "9"
+
+
             Constants:
                 Defined using the final keyword.
                 Once initialized, a constant cannot be modified.
@@ -77,7 +85,6 @@ public class LAB_1 {
 
                 // Input
                 Scanner in = new Scanner(System.in);
-                System.out.println("Enter two natural numbers:");
                 a = in.nextInt();
                 b = in.nextInt();
 
@@ -157,7 +164,7 @@ public class LAB_1 {
             public static void main(String[] args) {
                 Person p = new Person();
                 // Error 1: Identifier starting with a number (invalid)
-                // int 2age;
+                // int a0b;
 
                 // Error 2: Using reserved keyword as an identifier
                 // int class;
