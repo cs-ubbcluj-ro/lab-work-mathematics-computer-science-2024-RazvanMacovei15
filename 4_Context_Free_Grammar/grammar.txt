@@ -1,0 +1,73 @@
+# Starting Symbol
+<program> -> <class_header>
+
+# Alphabet
+## Terminals
+"class", "public", "static", "void", "main", "String[]", "args", "Scanner", "System.out.println", "new", "if", "else", "while", "for", "int", "float", "boolean", "String", "(" , ")", "{" , "}", "[", "]", "=" , ";", ",", "!=" , "==" , "<" , ">" , "<=", ">=", "+", "-", "*", "/", [A-Za-z][A-Za-z0-9]* (ID), [0-9]+ (CONST)
+
+## Non-Terminals
+<program>, <class_header>, <main_method>, <declaration_list>, <declaration>, <data_type>, <statement_list>, <statement>, <assignment>, <input_statement>, <output_statement>, <conditional_statement>, <loop_statement>, <method_call>, <parameter_list>, <condition>, <expression>, <arithmetic_operator>, <relational_operator>
+
+# Program Structure
+<program> -> <class_header>
+
+<class_header> -> "class" ID "{" <main_method> "}"
+
+<main_method> -> "public static void main(String[] args)" "{" <declaration_list> <statement_list> "}"
+
+<declaration_list> -> <declaration> | <declaration> <declaration_list>
+
+<declaration> -> <data_type> ID "=" <expression> ";"
+               | <data_type> ID ";"
+
+<data_type> -> "int" | "float" | "boolean" | "String" | "class" ID
+
+<statement_list> -> <statement> | <statement> <statement_list>
+
+<statement> -> <assignment> | <input_statement> | <output_statement> | <conditional_statement> | <loop_statement> | <method_call>
+
+# Assignments
+<assignment> -> ID "=" <expression> ";"
+
+# Input/Output Statements
+<input_statement> -> "Scanner" ID "=" "new Scanner(System.in)" ";"
+                            ID "=" ID ".next" <data_type> "()" ";"
+
+<output_statement> -> "System.out.println" "(" <expression> ")" ";"
+
+# Conditional Statements
+<conditional_statement> -> "if" "(" <condition> ")" "{" <statement_list> "}"
+                          | "if" "(" <condition> ")" "{" <statement_list> "}" "else" "{" <statement_list> "}"
+
+# Loop Statements
+<loop_statement> -> "while" "(" <condition> ")" "{" <statement_list> "}"
+                  | "for" "(" <assignment> <condition> ";" <assignment> ")" "{" <statement_list> "}"
+
+# Method Calls
+<method_call> -> ID "(" <parameter_list> ")" ";"
+
+# Parameters
+<parameter_list> -> <expression> | <expression> "," <parameter_list> | e
+
+# Conditions
+<condition> -> <expression> <relational_operator> <expression>
+
+# Expressions
+<expression> -> ID | CONST | <expression> <arithmetic_operator> <expression> | "(" <expression> ")"
+
+# Operators
+<arithmetic_operator> -> "+" | "-" | "*" | "/"
+<relational_operator> -> "!=" | "==" | "<" | ">" | "<=" | ">="
+
+<id> -> <letter> <id-tail>
+
+<id-tail> -> <alphanumeric> <id-tail> | e
+
+<const> -> <digit> | <digit> <const>
+
+<letter> -> "A" | "B" | "C" | ... | "Z" | "a" | "b" | "c" | ... | "z"
+
+<digit> -> "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+
+<alphanumeric> -> <letter> | <digit>
+

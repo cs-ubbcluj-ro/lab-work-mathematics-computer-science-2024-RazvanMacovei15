@@ -97,6 +97,7 @@ public class LAB_1 {
                     }
                 }
 
+
                 // Output
                 System.out.println("The GCD is: " + a);
             }
